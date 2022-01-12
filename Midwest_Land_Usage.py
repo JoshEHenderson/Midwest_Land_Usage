@@ -35,7 +35,12 @@ logging.captureWarnings(capture=True) # Redirect warnings to the logs
 # =============================================================================
 
 # Read in tif files (Only years 2004-2020 were present in the file)
-rio_all_img = [rio.open('land_use_data/CDL_2004_clip_20211207232419_873250894.tif'), rio.open('land_use_data/CDL_2008_clip_20211207232419_873250894.tif'), rio.open('land_use_data/CDL_2012_clip_20211207232419_873250894.tif'), rio.open('land_use_data/CDL_2016_clip_20211207232419_873250894.tif'), rio.open('land_use_data/CDL_2020_clip_20211207232419_873250894.tif')]
+DIR1 = # First file (2004)
+DIR2 = # Second File (2008)
+DIR3 = # Third file (2012)
+DIR4 = # Fourth file (2016)
+DIR5 = # Fifth file (2020)
+rio_all_img = [rio.open(DIR1), rio.open(DIR2), rio.open(DIR3), rio.open(DIR4), rio.open(DIR5)]
 
 # PRINT TRANSFORMATION MATRICES
 year = [2004, 2008, 2012, 2016, 2020]   # Years present
@@ -179,7 +184,7 @@ countyA = []                    # Store the area of each county in a list for fu
 for poly in boundary_prj:       # For each polygon,
     countyA.append(poly.area)   #   Store the area of that polygon
 
-print("\nCounty: area")           # Print out the size of each county to the screen
+print("\nCounty: area")         # Print out the size of each county to the screen
 for i in range(5):              # For each county
     print(f"{countyNm[i]}: {countyA[i]}") # print the area
 
